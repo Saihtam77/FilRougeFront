@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjetsService } from '../projets.service';
-import { Projet } from '../../../Data_types/Projet';
+import { Projet } from '../../../Data_types/Projets_types';
 
 @Component({
   selector: 'app-home',
