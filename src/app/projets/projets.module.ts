@@ -6,8 +6,8 @@ import { ProjetsComponent } from './projets.component';
 import { ProjetsListeComponent } from './projets-liste/projets-liste.component';
 import { ProjetsCreateComponent } from './projets-create/projets-create.component';
 import { ProjetsEditComponent } from './projets-edit/projets-edit.component';
-import { ProjetPageComponent } from './projet-page/projet-page.component';
 import { RouterLink, RouterLinkActive, Routes } from '@angular/router';
+import { ProjetsTableComponent } from './projets-table/projets-table.component';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { RouterLink, RouterLinkActive, Routes } from '@angular/router';
     ProjetsListeComponent,
     ProjetsCreateComponent,
     ProjetsEditComponent,
-    ProjetPageComponent
+    ProjetsTableComponent
   ],
   imports: [
     RouterLinkActive,

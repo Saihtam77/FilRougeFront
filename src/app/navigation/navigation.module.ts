@@ -15,6 +15,11 @@ import { NavBarProjetsComponent } from './nav-bar-projets/nav-bar-projets.compon
     RouterLink,
     RouterLinkActive,
     CommonModule
+  ],
+
+  exports: [
+    NavBarComponent,
+    NavBarProjetsComponent
   ]
 })
 export class NavigationModule { }

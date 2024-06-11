@@ -8,15 +8,15 @@ import { Projet } from '../../Data_types/Projets_types';
 })
 export class ProjetsService {
 
-  url = 'http://localhost:3000/projets';
+  url = 'http://localhost:5271/projets';
 
   constructor(private http: HttpClient) { }
 
   getProjets(): Observable<Projet[]> {
-    return this.http.get<Projet[]>(this.url);
+    return this.http.get<Projet[]>(`${this.url}/ShowProjets`);
   }
 
   getProjetById(id: number): Observable<Projet> {
-    return this.http.get<Projet>(`${this.url}/${id}`);
+    return this.http.get<Projet>(`${this.url}/ShowProjets/${id}`);
   }
 }
