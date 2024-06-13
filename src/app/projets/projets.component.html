@@ -1,1 +1,2 @@
-<app-projets-table [projets]="projets"></app-projets-table>
+<a class="btn btn-info" routerLink="create">New project</a>
+<app-projets-table [projets]="projets" (OnDeleteEvent)="OnDelete($event)"></app-projets-table>

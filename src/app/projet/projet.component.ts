@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Projet } from '../../../Data_types/Projets_types';
-import { ProjetsService } from '../projets.service';
+import { ProjetsService } from '../Services/projets.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

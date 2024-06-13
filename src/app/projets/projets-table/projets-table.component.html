@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table container mt-5">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -7,14 +7,15 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
+
     <tbody *ngIf="projets">
       <tr *ngFor="let projet of projets">
         <th scope="row">{{projet.id}}</th>
-        <td><a routerLink="">{{projet.nom}}</a></td>
-        <td>{{projet.created_at}}</td>
+        <td><a [routerLink]="['/Projet/',projet.id]">{{projet.nom}}</a></td>
+        <td>{{projet.createdAt}}</td>
         <td>
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <a class="btn btn-info" [routerLink]="['edit',projet.id]">Edit</a>
+            <a class="btn btn-danger" (click)="OnDelete(projet.id)">Delete</a>
         </td>
       </tr>
       

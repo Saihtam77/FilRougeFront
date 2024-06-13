@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProjetsService } from '../projets.service';
+import { ProjetsService } from '../Services/projets.service';
 import { Projet } from '../../../Data_types/Projets_types';
 
 @Component({
@@ -11,8 +11,12 @@ export class HomeComponent {
 
   projets: Projet[];
   constructor(private projetsService: ProjetsService) {
-    this.projetsService.getProjets().subscribe((data) => {
-      this.projets = data;
-    });
+  }
+
+  ngOnInit(): void {
+    this.projetsService.projets$.subscribe(
+      projets => this.projets = projets
+    );
+    this.projetsService.getProjets();
   }
 }

@@ -8,6 +8,7 @@ import { ProjetsCreateComponent } from './projets-create/projets-create.componen
 import { ProjetsEditComponent } from './projets-edit/projets-edit.component';
 import { RouterLink, RouterLinkActive, Routes } from '@angular/router';
 import { ProjetsTableComponent } from './projets-table/projets-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ProjetsTableComponent } from './projets-table/projets-table.component';
     RouterLinkActive,
     RouterLink,
     CommonModule,
+    ReactiveFormsModule,
     ProjetsRoutingModule
   ]
 })

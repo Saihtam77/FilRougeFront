@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { Projet } from '../../../Data_types/Projets_types';
-import { ProjetsService } from '../projets.service';
+import { Component, OnInit } from '@angular/core';
+import { Commentaire, Liste, Projet, Tache } from '../../../Data_types/Projets_types';
+import { ProjetsService } from '../Services/projets.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projets',
@@ -10,11 +11,25 @@ import { ProjetsService } from '../projets.service';
 export class ProjetsComponent {
 
   projets: Projet[];
+  listes:Liste[];
+  taches:Tache[];
+  commentaire:Commentaire[];
 
-  constructor(private projetsService: ProjetsService) {
-    this.projetsService.getProjets().subscribe((projets: Projet[]) => {
-      this.projets = projets;
-    });
+  constructor(private projetsService: ProjetsService, private router: Router) {
+    
+  }
+
+  ngOnInit(): void {
+    this.projetsService.projets$.subscribe(
+      projets => this.projets = projets
+    );
+    this.projetsService.getProjets();
+  }
+
+ 
+
+  OnDelete(id: number) {
+    this.projetsService.deleteProjet(id);
   }
 
 }

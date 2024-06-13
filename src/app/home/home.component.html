@@ -1,19 +1,18 @@
 <section class="container pt-5">
     <h1 class="text-center">App portfolio</h1>
 
-    <a class="btn btn-info mx-2" routerLink="/Projets">Nouveau projet</a>
+    <a class="btn btn-info mx-2" routerLink="/Projets/create">Nouveau projet</a>
     <a class="btn btn-info" routerLink="/Projets">Mes projet</a>
 </section>
 
 <section class="container pt-5 ">
     <div>
         <h5> Projet existant</h5>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" *ngIf="projets">
             <li class="list-group-item flex justify-content-between" *ngFor="let projet of projets">
                 <a [routerLink]="['/Projet', projet.id]">{{projet.nom}}</a>
-                <p>{{projet.created_at}}</p>
+                <p>{{projet.createdAt}}</p>
             </li>
-
         </ul>
     </div>
 </section>

@@ -1,26 +1,24 @@
-export class Projet {
+export class Projet {   
     id: number;
     nom: string;
-    created_at: string;
-    listes: Liste[];
+    createdAt: string;
 }
 
 export class Liste {
     id: number;
     nom: string;
-    created_at: string;
-    taches: Tache[];
+    createdAt: string;
 }
 
 export class Tache {
     id: number;
     nom: string;
-    created_at: string;
-    commentaires: Commentaire[];
+    detail:string;
+    createdAt: string;
 }
 
 export class Commentaire {
     id: number;
     texte: string;
-    created_at: string;
+    createdAt: string;
 }

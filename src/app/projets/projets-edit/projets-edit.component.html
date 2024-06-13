@@ -1,1 +1,13 @@
-<p>projets-edit works!</p>
+<section class="container gap-4 mt-5 d-flex flex-column justify-content-center">
+    <h1>Modifier un projet</h1>
+    <form class="d-flex flex-column gap-4" *ngIf="projet" [formGroup]="projetEdit" (ngSubmit)="onSubmit()">
+
+        <div class="d-flex flex-column gap-2 form-group">
+            <label for="">Quelle sera le nom de votre projet ?</label>
+            <input class="form-control" type="text" formControlName="nom" [placeholder]="projet.nom" required>
+        </div>
+
+        <button class="btn btn-success col-3" type="submit">Update</button>
+    </form>
+
+</section>
