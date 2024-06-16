@@ -10,13 +10,14 @@ export class ListesService {
   private listesSubject = new BehaviorSubject<Liste[]>([]);
   listes$ = this.listesSubject.asObservable();
 
-  url = 'http://localhost:5271';
+  url = 'http://localhost:5147';
   constructor(private http: HttpClient) { }
 
   getListes() {
     this.http.get<Liste[]>(`${this.url}/listes`).subscribe(
       listes => this.listesSubject.next(listes)
     );
+    return this.listes$;
   }
 
   getListeById(id: number) {

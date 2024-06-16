@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Commentaire, Liste, Projet, Tache } from '../../../Data_types/Projets_types';
+import { Projet } from '../../../Data_types/Projets_types';
 import { ProjetsService } from '../Services/projets.service';
 import { Router } from '@angular/router';
 
@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 export class ProjetsComponent {
 
   projets: Projet[];
-  listes:Liste[];
-  taches:Tache[];
-  commentaire:Commentaire[];
+  
 
   constructor(private projetsService: ProjetsService, private router: Router) {
     

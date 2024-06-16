@@ -8,6 +8,7 @@ export class Liste {
     id: number;
     nom: string;
     createdAt: string;
+    projet_id: number;
 }
 
 export class Tache {
@@ -15,10 +16,12 @@ export class Tache {
     nom: string;
     detail:string;
     createdAt: string;
+    liste_id: number;
 }
 
 export class Commentaire {
     id: number;
     texte: string;
     createdAt: string;
+    tache_id: number;
 }

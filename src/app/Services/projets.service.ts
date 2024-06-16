@@ -13,7 +13,7 @@ export class ProjetsService {
   projets$ = this.projetsSubject.asObservable();
   
   
-  url = 'http://localhost:5271';
+  url = 'http://localhost:5147';
   constructor(private http: HttpClient) { }
 
 
@@ -22,6 +22,7 @@ export class ProjetsService {
     this.http.get<Projet[]>(`${this.url}/projets`).subscribe(
       projets => this.projetsSubject.next(projets)
     );
+    return this.projets$;
   }
 
   getProjetById(id: number) {
