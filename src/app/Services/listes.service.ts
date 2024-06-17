@@ -10,7 +10,7 @@ export class ListesService {
   private listesSubject = new BehaviorSubject<Liste[]>([]);
   listes$ = this.listesSubject.asObservable();
 
-  url = 'http://localhost:5147';
+  url = 'projetfilerougebackend.azurewebsites.net';
   constructor(private http: HttpClient) { }
 
   getListes() {
