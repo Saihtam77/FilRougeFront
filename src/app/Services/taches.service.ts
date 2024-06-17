@@ -10,7 +10,8 @@ export class TachesService {
   private tachesSubject = new BehaviorSubject<Tache[]>([]);
   taches$ = this.tachesSubject.asObservable();
   
-  url = 'projetfilerougebackend.azurewebsites.net';
+  url = 'https://projetfilerougebackend.azurewebsites.net';
+
   constructor(private http: HttpClient) { }
 
   getTaches() {

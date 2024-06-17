@@ -13,7 +13,7 @@ export class ProjetsService {
   projets$ = this.projetsSubject.asObservable();
   
   
-  url = 'projetfilerougebackend.azurewebsites.net';
+  url = 'https://projetfilerougebackend.azurewebsites.net';
   constructor(private http: HttpClient) { }
 
 

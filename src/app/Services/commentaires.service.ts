@@ -9,7 +9,7 @@ import { Commentaire } from '../../../Data_types/Projets_types';
 export class CommentairesService {
   private commentairesSubject = new BehaviorSubject<Commentaire[]>([]);
   commentaires$ = this.commentairesSubject.asObservable();
-  url = 'projetfilerougebackend.azurewebsites.net';
+  url = 'https://projetfilerougebackend.azurewebsites.net';
   
   constructor(private http: HttpClient) { }
 
