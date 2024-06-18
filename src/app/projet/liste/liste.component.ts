@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Liste, Tache } from '../../../../Data_types/Projets_types';
 import { TachesService } from '../../Services/taches.service';
 
@@ -7,17 +7,18 @@ import { TachesService } from '../../Services/taches.service';
   templateUrl: './liste.component.html',
   styleUrl: './liste.component.css'
 })
-export class ListeComponent {
+export class ListeComponent implements OnInit{
 
   @Input()liste:Liste;
 
   taches?:Tache[];
 
-  constructor(private TachesService:TachesService) {
-    this.TachesService.getTacheByListeId(this.liste.id).subscribe((taches:Tache[]) => {
-      this.taches = taches;
-    });
+  constructor(private TachesService:TachesService) {}
 
+  ngOnInit() {
+    this.TachesService.getTacheByListeId(this.liste.id).subscribe(
+      taches => this.taches = taches
+    );
   }
 
 }

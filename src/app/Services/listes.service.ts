@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Liste } from '../../../Data_types/Projets_types';
 
 @Injectable({
@@ -25,7 +25,9 @@ export class ListesService {
   }
 
   getListeByProjetId(projetId: number) {
-    this.listes$.subscribe(listes => listes.filter(liste => liste.projetId == projetId));
+    this.http.get<Liste[]>(`${this.url}/listes`).subscribe(
+      listes => this.listesSubject.next(listes.filter(liste => liste.projetId == projetId))
+    );
     return this.listes$;
   }
 

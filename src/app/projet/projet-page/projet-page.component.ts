@@ -10,15 +10,14 @@ import { ListesService } from '../../Services/listes.service';
 export class ProjetPageComponent implements OnInit{
   @Input() projet: Projet;
   
-  listes:Liste[];
+  listes?:Liste[];
   
-  constructor(private ListesService:ListesService) {
-
-  }
+  constructor(private ListesService:ListesService) {}
 
   ngOnInit() {
-    console.log(this.projet);
-    this.ListesService.getListeByProjetId(this.projet.id).subscribe(listes => this.listes = listes);
+    this.ListesService.getListeByProjetId(this.projet.id).subscribe(
+      listes => this.listes = listes
+    );
   }
 
   

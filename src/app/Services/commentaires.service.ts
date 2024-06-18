@@ -25,6 +25,11 @@ export class CommentairesService {
     return this.http.get<Commentaire>(`${this.url}/commentaires/${id}`);
   }
 
+  getCommentaireByTacheId(tacheId: number) {
+    this.commentaires$.subscribe(commentaires => commentaires.filter(commentaire => commentaire.tacheId === tacheId));
+    return this.commentaires$;
+  }
+
   deleteCommentaire(id: number) {
     this.http.delete(`${this.url}/commentaires/${id}`).subscribe(
       () => this.getCommentaires()

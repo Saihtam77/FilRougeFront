@@ -26,7 +26,9 @@ export class TachesService {
   }
 
   getTacheByListeId(ListeId: number) {
-    this.taches$.subscribe(taches => taches.filter(tache => tache.listeId === ListeId));
+    this.http.get<Tache[]>(`${this.url}/taches`).subscribe(
+      taches => this.tachesSubject.next(taches.filter(tache => tache.listeId == ListeId))
+    );
     return this.taches$;
   }
 
