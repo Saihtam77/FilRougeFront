@@ -10,7 +10,7 @@ export class ListesService {
   private listesSubject = new BehaviorSubject<Liste[]>([]);
   listes$ = this.listesSubject.asObservable();
 
-  url = 'https://projetfilerougebackend.azurewebsites.net/';
+  url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
   getListes() {
@@ -22,6 +22,11 @@ export class ListesService {
 
   getListeById(id: number) {
     return this.http.get<Liste>(`${this.url}/listes/${id}`);
+  }
+
+  getListeByProjetId(projetId: number) {
+    this.listes$.subscribe(listes => listes.filter(liste => liste.projetId == projetId));
+    return this.listes$;
   }
 
   deleteListe(id: number) {

@@ -10,7 +10,7 @@ export class TachesService {
   private tachesSubject = new BehaviorSubject<Tache[]>([]);
   taches$ = this.tachesSubject.asObservable();
   
-  url = 'https://projetfilerougebackend.azurewebsites.net';
+  url = "http://localhost:5147";
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +18,16 @@ export class TachesService {
     this.http.get<Tache[]>(`${this.url}/taches`).subscribe(
       taches => this.tachesSubject.next(taches)
     );
+    return this.taches$;
   }
 
   getTacheById(id: number) {
     return this.http.get<Tache>(`${this.url}/taches/${id}`);
+  }
+
+  getTacheByListeId(ListeId: number) {
+    this.taches$.subscribe(taches => taches.filter(tache => tache.listeId === ListeId));
+    return this.taches$;
   }
 
   deleteTache(id: number) {

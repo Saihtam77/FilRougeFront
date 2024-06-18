@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Liste } from '../../../../Data_types/Projets_types';
+import { Liste, Tache } from '../../../../Data_types/Projets_types';
+import { TachesService } from '../../Services/taches.service';
 
 @Component({
   selector: 'app-liste',
@@ -8,6 +9,15 @@ import { Liste } from '../../../../Data_types/Projets_types';
 })
 export class ListeComponent {
 
-  @Input()listes:Liste[];
+  @Input()liste:Liste;
+
+  taches?:Tache[];
+
+  constructor(private TachesService:TachesService) {
+    this.TachesService.getTacheByListeId(this.liste.id).subscribe((taches:Tache[]) => {
+      this.taches = taches;
+    });
+
+  }
 
 }

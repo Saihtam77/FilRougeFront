@@ -1,4 +1,8 @@
-<section class="d-flex justify-content-center my-5 gap-5">
-    {{projet | json}}
+<section *ngIf="listes" class="container my-5 gap-5 d-flex">
+
     {{listes | json}}
+    <app-liste *ngFor="let liste of listes"  [liste]="liste"></app-liste>
+
+
+
 </section>

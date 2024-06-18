@@ -1,15 +1,29 @@
-import { Component, Input, } from '@angular/core';
-import { Commentaire, Liste, Projet, Tache } from '../../../../Data_types/Projets_types';
+import { Component, Input, OnInit } from '@angular/core';
+import { Liste, Projet } from '../../../../Data_types/Projets_types';
+import { ListesService } from '../../Services/listes.service';
 
 @Component({
   selector: 'app-projet-page',
   templateUrl: './projet-page.component.html',
   styleUrl: './projet-page.component.css'
 })
-export class ProjetPageComponent {
+export class ProjetPageComponent implements OnInit{
   @Input() projet: Projet;
-  @Input() listes?: Liste[] | null;
-  @Input() taches?: Tache[] | null;
-  @Input() commentaires?: Commentaire[] | null;
+  
+  listes:Liste[];
+  
+  constructor(private ListesService:ListesService) {
+
+  }
+
+  ngOnInit() {
+    console.log(this.projet);
+    this.ListesService.getListeByProjetId(this.projet.id).subscribe(listes => this.listes = listes);
+  }
+
+  
+
+  
+
 
 }

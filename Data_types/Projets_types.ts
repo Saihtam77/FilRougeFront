@@ -2,13 +2,17 @@ export class Projet {
     id: number;
     nom: string;
     createdAt: string;
+    
+    listes: Liste[];
 }
 
 export class Liste {
     id: number;
     nom: string;
     createdAt: string;
-    projet_id: number;
+    projetId: number;
+
+    taches: Tache[];
 }
 
 export class Tache {
@@ -16,12 +20,14 @@ export class Tache {
     nom: string;
     detail:string;
     createdAt: string;
-    liste_id: number;
+    listeId: number;
+
+    commentaires: Commentaire[];
 }
 
 export class Commentaire {
     id: number;
     texte: string;
     createdAt: string;
-    tache_id: number;
+    tacheId: number;
 }

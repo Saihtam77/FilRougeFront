@@ -11,9 +11,9 @@ export class ProjetsService {
   //observable to notify the components that the data has changed
   private projetsSubject = new BehaviorSubject<Projet[]>([]);
   projets$ = this.projetsSubject.asObservable();
-  
-  
-  url = 'https://projetfilerougebackend.azurewebsites.net';
+
+
+  url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
 
