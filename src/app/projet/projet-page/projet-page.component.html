@@ -1,8 +1,5 @@
-<section *ngIf="listes" class="container my-5 gap-5 d-flex">
+<section *ngIf="listes" class="container py-5 bg-gradient d-flex gap-5">
 
-    {{listes | json}}
-    <app-liste *ngFor="let liste of listes"  [liste]="liste"></app-liste>
-
-
+    <app-liste *ngFor="let liste of listes" [liste]="liste"></app-liste>
 
 </section>

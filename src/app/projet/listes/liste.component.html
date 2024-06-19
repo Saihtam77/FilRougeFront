@@ -1,0 +1,11 @@
+
+<div *ngIf="taches" class="col-sm bg-secondary d-flex flex-column align-items-center p-2 border border-black">
+    {{liste.nom}}
+    <div *ngFor="let tache of taches" >
+        <app-tache [tache]=tache></app-tache>
+    </div>
+  
+</div>
+
+
+

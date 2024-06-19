@@ -7,15 +7,18 @@ import { TachesService } from '../../Services/taches.service';
   templateUrl: './liste.component.html',
   styleUrl: './liste.component.css'
 })
-export class ListeComponent implements OnInit{
+export class ListeComponent implements OnInit {
 
-  @Input()liste:Liste;
+  @Input() liste: Liste;
 
-  taches?:Tache[];
+  taches?: Tache[];
 
-  constructor(private TachesService:TachesService) {}
+  constructor(private TachesService: TachesService) { }
 
   ngOnInit() {
+
+    if (!this.liste) return;
+    
     this.TachesService.getTacheByListeId(this.liste.id).subscribe(
       taches => this.taches = taches
     );

@@ -4,10 +4,10 @@ import { ProjetComponent } from './projet.component';
 import { ProjetPageComponent } from './projet-page/projet-page.component';
 import { ProjetsComponent } from '../projets/projets.component';
 import { ProjetsCreateComponent } from '../projets/projets-create/projets-create.component';
+import { ListeComponent } from './listes/liste.component';
 
 const routes: Routes = [
-  { path: ':id', component: ProjetComponent },
-  
+  { path: ':id', component: ProjetComponent },  
 ];
 
 @NgModule({
