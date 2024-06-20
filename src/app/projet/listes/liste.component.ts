@@ -1,27 +1,33 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Liste, Tache } from '../../../../Data_types/Projets_types';
 import { TachesService } from '../../Services/taches.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-liste',
   templateUrl: './liste.component.html',
   styleUrl: './liste.component.css'
 })
-export class ListeComponent implements OnInit {
+export class ListeComponent implements OnInit{
 
   @Input() liste: Liste;
 
-  taches?: Tache[];
+  taches: Tache[];
 
-  constructor(private TachesService: TachesService) { }
+  constructor(private TachesService: TachesService) { 
+    
+  }
 
   ngOnInit() {
-
-    if (!this.liste) return;
     
+    if(!this.liste) return;
     this.TachesService.getTacheByListeId(this.liste.id).subscribe(
       taches => this.taches = taches
     );
   }
+
+
+
+ 
 
 }

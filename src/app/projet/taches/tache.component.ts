@@ -7,7 +7,7 @@ import { CommentairesService } from '../../Services/commentaires.service';
   templateUrl: './tache.component.html',
   styleUrl: './tache.component.css'
 })
-export class TacheComponent implements OnInit {
+export class TacheComponent {
 
   @Input() tache: Tache;
   Commentaires?: Commentaire[];
@@ -15,10 +15,10 @@ export class TacheComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.CommentairesService.getCommentaireByTacheId(this.tache.id).subscribe(
-      Commentaires => this.Commentaires = Commentaires
-    );
-  }
+  // ngOnInit() {
+  //   this.CommentairesService.getCommentaireByTacheId(this.tache.id).subscribe(
+  //     Commentaires => this.Commentaires = Commentaires
+  //   );
+  // }
 
 }

@@ -10,13 +10,13 @@ import { Projet } from '../../../Data_types/Projets_types';
 export class HomeComponent {
 
   projets: Projet[];
-  constructor(private projetsService: ProjetsService) {
-  }
 
-  ngOnInit(): void {
-    this.projetsService.projets$.subscribe(
-      projets => this.projets = projets
-    );
+  constructor(private projetsService: ProjetsService) {
+    this.projetsService.projets$.subscribe(projets => {
+      this.projets = projets;
+    });
     this.projetsService.getProjets();
   }
+
+
 }

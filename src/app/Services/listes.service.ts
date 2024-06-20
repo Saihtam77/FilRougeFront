@@ -21,13 +21,15 @@ export class ListesService {
   }
 
   getListeById(id: number) {
-    return this.http.get<Liste>(`${this.url}/listes/${id}`);
+    this.http.get<Liste>(`${this.url}/listes/${id}`).subscribe(
+      liste => this.listesSubject.next([liste])
+    );
+    return this.listes$;
   }
 
   getListeByProjetId(projetId: number) {
-    this.http.get<Liste[]>(`${this.url}/listes`).subscribe(
-      listes => this.listesSubject.next(listes.filter(liste => liste.projetId == projetId))
-    );
+    this.http.get<Liste[]>(`${this.url}/listes/GetListesByProjetId/${projetId}`).subscribe
+      (listes => this.listesSubject.next(listes));
     return this.listes$;
   }
 

@@ -13,17 +13,12 @@ export class ProjetsComponent {
   projets: Projet[];
   
 
-  constructor(private projetsService: ProjetsService, private router: Router) {
-    
-  }
-
-  ngOnInit(): void {
+  constructor(private projetsService: ProjetsService) {
     this.projetsService.projets$.subscribe(
       projets => this.projets = projets
     );
     this.projetsService.getProjets();
   }
-
  
 
   OnDelete(id: number) {

@@ -10,14 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjetComponent {
 
-  projet: Projet;
+  projet?: Projet;
 
   constructor(private route: ActivatedRoute, private ProjetsService: ProjetsService) {
     this.route.params.subscribe(params => {
-
-      this.ProjetsService.getProjetById(params['id']).subscribe((projet: Projet) => {
-        this.projet = projet;
-      });
+      
+      this.ProjetsService.getProjetById(params['id']);
+      
+      this.ProjetsService.projets$.subscribe(
+        projets => {
+          this.projet = projets[0];
+        }
+      );
 
     });
   }

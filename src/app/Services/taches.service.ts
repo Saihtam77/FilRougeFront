@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Tache } from '../../../Data_types/Projets_types';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Tache } from '../../../Data_types/Projets_types';
 export class TachesService {
   private tachesSubject = new BehaviorSubject<Tache[]>([]);
   taches$ = this.tachesSubject.asObservable();
-  
+
   url = "http://localhost:5147";
 
   constructor(private http: HttpClient) { }
@@ -22,14 +22,14 @@ export class TachesService {
   }
 
   getTacheById(id: number) {
-    return this.http.get<Tache>(`${this.url}/taches/${id}`);
-  }
-
-  getTacheByListeId(ListeId: number) {
-    this.http.get<Tache[]>(`${this.url}/taches`).subscribe(
-      taches => this.tachesSubject.next(taches.filter(tache => tache.listeId == ListeId))
+    this.http.get<Tache>(`${this.url}/taches/${id}`).subscribe(
+      tache => this.tachesSubject.next([tache])
     );
     return this.taches$;
+  }
+
+  getTacheByListeId(listeId: number): Observable<Tache[]> {
+    return this.http.get<Tache[]>(`${this.url}/taches/GetTachesByListeId/${listeId}`)
   }
 
   deleteTache(id: number) {
@@ -50,5 +50,5 @@ export class TachesService {
     );
   }
 
-  
+
 }

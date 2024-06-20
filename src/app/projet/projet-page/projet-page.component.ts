@@ -15,9 +15,10 @@ export class ProjetPageComponent implements OnInit{
   constructor(private ListesService:ListesService) {}
 
   ngOnInit() {
-    this.ListesService.getListeByProjetId(this.projet.id).subscribe (
+    this.ListesService.listes$.subscribe(
       listes => this.listes = listes
-    )
+    );
+    this.ListesService.getListeByProjetId(this.projet.id).subscribe();
   }
 
   

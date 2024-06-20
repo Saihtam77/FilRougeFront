@@ -26,7 +26,10 @@ export class ProjetsService {
   }
 
   getProjetById(id: number) {
-    return this.http.get<Projet>(`${this.url}/projets/${id}`);
+    this.http.get<Projet>(`${this.url}/projets/${id}`).subscribe(
+      projet => this.projetsSubject.next([projet])
+    );
+    return this.projets$;
   }
 
   deleteProjet(id: number) {

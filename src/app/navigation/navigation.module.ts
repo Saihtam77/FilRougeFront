@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NavBarProjetsComponent } from './nav-bar-projets/nav-bar-projets.component';
 
 
 
 @NgModule({
   declarations: [
     NavBarComponent,
-    NavBarProjetsComponent
   ],
   imports: [
     RouterLink,
@@ -19,7 +17,6 @@ import { NavBarProjetsComponent } from './nav-bar-projets/nav-bar-projets.compon
 
   exports: [
     NavBarComponent,
-    NavBarProjetsComponent
   ]
 })
 export class NavigationModule { }

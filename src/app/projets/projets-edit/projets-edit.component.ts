@@ -10,20 +10,22 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ProjetsEditComponent {
 
-  projet: Projet;
+  projet?: Projet;
   id: number;
 
   constructor(private projetsService: ProjetsService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.projetsService.getProjetById(this.id).subscribe((projet: Projet) => {
-        this.projet = projet;
-      });
+      this.projetsService.projets$.subscribe(
+        projets => {
+          this.projet = projets.find(projet => projet.id == this.id);
+        }
+      );
     });
   }
 
   projetEdit:FormGroup = new FormGroup({
-    nom: new FormControl(''),
+    nom: new FormControl(this.projet?.nom),
   });
 
   onSubmit() {
