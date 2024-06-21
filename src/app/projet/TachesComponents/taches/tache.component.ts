@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tache, Commentaire } from '../../../../Data_types/Projets_types';
-import { CommentairesService } from '../../Services/commentaires.service';
+import { Tache, Commentaire } from '../../../../../Data_types/Projets_types';
+import { CommentairesService } from '../../../Services/commentaires.service';
 
 @Component({
   selector: 'app-tache',

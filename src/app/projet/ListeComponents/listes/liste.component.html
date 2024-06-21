@@ -1,0 +1,22 @@
+<div class="d-flex position-relative">
+    <div *ngIf="taches" class="col-sm bg-secondary d-flex flex-column align-items-center p-3 border border-black">
+        
+        <div class="d-flex mb-3">
+            <button class="btn btn-danger mt-2" (click)="OnDelete(liste.id)">Delete</button>
+            <button class="btn btn-info mt-2" (click)="toogleEditForm()">Edit</button>
+        </div>
+
+        {{liste.nom}}
+    
+        <div *ngFor="let tache of taches">
+            <app-tache [tache]=tache></app-tache>
+        </div>
+    
+        
+    
+    </div>
+    <div *ngIf="isEditForm" class="edit-form-overlay">
+        <app-liste-edit *ngIf="liste" [liste]="liste" (EditOverlayEvent)="OnEditOverlay()"></app-liste-edit>
+    </div>
+    
+</div>

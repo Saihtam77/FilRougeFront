@@ -14,10 +14,11 @@ export class ProjetsComponent {
   
 
   constructor(private projetsService: ProjetsService) {
+    this.projetsService.getProjets();
+    
     this.projetsService.projets$.subscribe(
       projets => this.projets = projets
     );
-    this.projetsService.getProjets();
   }
  
 

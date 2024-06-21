@@ -25,11 +25,8 @@ export class ProjetsService {
     return this.projets$;
   }
 
-  getProjetById(id: number) {
-    this.http.get<Projet>(`${this.url}/projets/${id}`).subscribe(
-      projet => this.projetsSubject.next([projet])
-    );
-    return this.projets$;
+  getProjetById(id: number) : Observable<Projet>{
+    return this.http.get<Projet>(`${this.url}/projets/${id}`);
   }
 
   deleteProjet(id: number) {

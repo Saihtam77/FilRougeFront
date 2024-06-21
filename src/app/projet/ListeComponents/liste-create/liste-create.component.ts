@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Liste } from '../../../../Data_types/Projets_types';
+import { Liste, Projet } from '../../../../../Data_types/Projets_types';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ListesService } from '../../Services/listes.service';
-import { Router } from '@angular/router';
+import { ListesService } from '../../../Services/listes.service';
 
 @Component({
   selector: 'app-liste-create',
@@ -11,17 +10,17 @@ import { Router } from '@angular/router';
 })
 export class ListeCreateComponent implements OnInit{
 
-  @Input() projetId: number;
+  @Input() projet: Projet;
   liste: FormGroup ;
 
-  constructor(private ListesService: ListesService, private router: Router) {
+  constructor(private ListesService: ListesService) {
 
   }
 
   ngOnInit() {
     this.liste = new FormGroup({
       nom: new FormControl(''),
-      projetId: new FormControl(this.projetId)
+      projetId: new FormControl(this.projet.id)
     });
   }
 
