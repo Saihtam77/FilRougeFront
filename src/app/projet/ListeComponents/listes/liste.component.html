@@ -1,22 +1,24 @@
-<div class="d-flex position-relative">
-    <div *ngIf="taches" class="col-sm bg-secondary d-flex flex-column align-items-center p-3 border border-black">
-        
-        <div class="d-flex mb-3">
-            <button class="btn btn-danger mt-2" (click)="OnDelete(liste.id)">Delete</button>
-            <button class="btn btn-info mt-2" (click)="toogleEditForm()">Edit</button>
-        </div>
+<div *ngIf="createOverlayState || editOverlayState" class="position-absolute top-0 end-0 p-3 border border-black min-vh-100 bg-white">
+    <app-liste-create *ngIf="createOverlayState"  [projetId]="projet.id"></app-liste-create>
+    <app-liste-edit *ngIf="editOverlayState" [projetId]="projet.id" [listeId]="listeId"></app-liste-edit>
+</div>
 
-        {{liste.nom}}
-    
-        <div *ngFor="let tache of taches">
-            <app-tache [tache]=tache></app-tache>
-        </div>
-    
+<div class="container py-5">
+    <!-- Btn -->
+    <button class="btn btn-info mb-5" (click)="CreateFormOverlay()">Ajouter une liste</button>
+
+    <div *ngIf="listes" class="d-flex gap-3 ">
         
-    
+        <div *ngFor="let liste of listes" class=" d-flex flex-column gap-3 p-3 col-3 bg-secondary bg-success-subtle">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-info" (click)="EditFormOverlay(liste.id)">Edit</button>
+                    <button class="btn btn-danger" (click)="onDeleteListe(liste.id)">Delete</button>
+                </div>
+
+                {{liste.nom}}
+
+        </div>
+        
     </div>
-    <div *ngIf="isEditForm" class="edit-form-overlay">
-        <app-liste-edit *ngIf="liste" [liste]="liste" (EditOverlayEvent)="OnEditOverlay()"></app-liste-edit>
-    </div>
-    
+
 </div>

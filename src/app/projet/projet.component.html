@@ -1,24 +1,11 @@
-<section *ngIf="projet">
+<section *ngIf="projet" class="position-relative">
 
+    
 
-    {{projet|json}}
+    <h2 class="container pt-5">{{projet.nom}}</h2>
     <!-- Form container -->
-    <div id=FormContainer class="position-fixed end-0 p-3 border border-black min-vh-100">
-        <app-liste-create *ngIf="listeCreate" [projet]="projet"></app-liste-create>
-    </div>
+    
 
-
-
-    <div [class.disabled-background]="isEditForm" class="container py-5">
-        <!-- Btn -->
-        <button class="btn btn-info mb-5" (click)="DisplayFormCreate()">Ajouter une liste</button>
-
-        <!-- Listes -->
-        <div  class=" bg-gradient d-flex gap-5">
-            <app-liste *ngFor="let liste of projet.listes" [liste]="liste" (OnEditOverlayEvent)="EditOverlay()"
-                (OnDeleteEvent)="DeleteListe($event)"></app-liste>
-        </div>
-
-    </div>
+    <app-liste [projet]="projet"></app-liste>
 
 </section>

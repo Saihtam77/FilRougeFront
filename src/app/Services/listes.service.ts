@@ -20,11 +20,14 @@ export class ListesService {
     return this.listes$;
   }
 
-  getListeById(id: number) : Observable<Liste> {
+  getListeById(id: number): Observable<Liste> {
+    this.http.get<Liste>(`${this.url}/listes/${id}`).subscribe(
+      liste => this.listesSubject.next([liste])
+    );
     return this.http.get<Liste>(`${this.url}/listes/${id}`);
   }
 
-  getListeByProjetId(projetId: number) : Observable<Liste[]>{
+  getListeByProjetId(projetId: number): Observable<Liste[]> {
     return this.http.get<Liste[]>(`${this.url}/listes/GetListesByProjetId/${projetId}`)
   }
 
@@ -32,7 +35,6 @@ export class ListesService {
     this.http.delete(`${this.url}/listes/${id}`).subscribe(
       () => this.getListes()
     );
-    
   }
 
   createListe(liste: Liste) {
@@ -41,7 +43,7 @@ export class ListesService {
     );
   }
 
-  updateListe(id:number, liste: Liste) {
+  updateListe(id: number, liste: Liste) {
     this.http.put<Liste>(`${this.url}/listes/${id}`, liste).subscribe(
       () => this.getListes()
     );

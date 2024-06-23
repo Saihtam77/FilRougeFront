@@ -8,23 +8,14 @@ import { ListesService } from '../Services/listes.service';
   selector: 'app-projet',
   templateUrl: './projet.component.html',
   styleUrl: './projet.component.css'
-})
+})  
 export class ProjetComponent implements OnInit {
 
   projet: Projet;
 
-  constructor(private route: ActivatedRoute, private ProjetsService: ProjetsService, private ListesService: ListesService) { }
-
-  //data
-
+  constructor(private route: ActivatedRoute, private ProjetsService: ProjetsService) { }
 
   //form
-  listeCreate: boolean = false;
-
-  isEditForm = false;
-
-
-
 
   ngOnInit() {
     
@@ -33,27 +24,11 @@ export class ProjetComponent implements OnInit {
       this.ProjetsService.getProjetById(params['id']).subscribe(
         projet => this.projet = projet
       );
-
-      this.ListesService.getListeByProjetId(params['id']).subscribe(
-        listes => this.projet.listes = listes
-      );
-
     });
   }
 
-  DeleteListe(id: number) {
-    this.ListesService.deleteListe(id);
-  }
 
-
-  DisplayFormCreate() {
-    this.listeCreate = !this.listeCreate;
-    console.log(this.listeCreate);
-  }
-
-  EditOverlay() {
-    this.isEditForm = !this.isEditForm;
-  }
+  
 
 
 

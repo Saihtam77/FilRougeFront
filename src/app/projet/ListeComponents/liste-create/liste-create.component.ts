@@ -10,22 +10,21 @@ import { ListesService } from '../../../Services/listes.service';
 })
 export class ListeCreateComponent implements OnInit{
 
-  @Input() projet: Projet;
+  @Input() projetId: number;
   liste: FormGroup ;
 
   constructor(private ListesService: ListesService) {
 
   }
 
-  ngOnInit() {
+  ngOnInit() {  
     this.liste = new FormGroup({
       nom: new FormControl(''),
-      projetId: new FormControl(this.projet.id)
+      projetId: new FormControl(this.projetId)
     });
   }
 
   onSubmit() {
-    console.log(this.liste.value);
     this.ListesService.createListe(this.liste.value);
     this.liste.reset();
   }

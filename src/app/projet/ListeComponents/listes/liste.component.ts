@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Liste, Tache } from '../../../../../Data_types/Projets_types';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Liste, Projet, Tache } from '../../../../../Data_types/Projets_types';
 import { TachesService } from '../../../Services/taches.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ListesService } from '../../../Services/listes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste',
@@ -10,47 +12,42 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ListeComponent implements OnInit {
 
-  @Input() liste: Liste;
-  taches: Tache[];
- 
-  @Output() OnDeleteEvent = new EventEmitter<number>();
-  @Output() OnEditOverlayEvent = new EventEmitter();
+  listes: Liste[];
 
-  listeName: FormGroup;
-  
-  isEditForm = false;
+  @Input() projet: Projet;
 
+  listeId: number;//for edit
 
+  createOverlayState = false;
+  editOverlayState = false;
 
-  constructor(private TachesService: TachesService) {
-
+  constructor(private ListesService: ListesService) {
   }
-
 
   ngOnInit() {
-
-    if (!this.liste) return;
-    this.TachesService.getTacheByListeId(this.liste.id).subscribe(
-      taches => this.taches = taches
+    this.ListesService.getListeByProjetId(this.projet.id).subscribe(
+      listes => this.listes = listes
     );
-
-    this.listeName = new FormGroup({
-      nom: new FormControl("")
-    });
-
   }
 
-  //Edit liste methode
-  toogleEditForm() {
-    this.isEditForm = !this.isEditForm;
+
+  onDeleteListe(id: number) {
+    this.ListesService.deleteListe(id);
+    this.listes = this.listes.filter(liste => liste.id !== id);
   }
-  
-  OnEditOverlay() {
-    this.OnEditOverlayEvent.emit();
+
+
+  CreateFormOverlay() {
+    this.createOverlayState = !this.createOverlayState;
+    this.editOverlayState = false;
   }
-  OnDelete(id: number) {
-    this.OnDeleteEvent.emit(id);
+
+  EditFormOverlay(id: number) {
+    this.listeId = id;
+    this.editOverlayState = !this.editOverlayState;
+    this.createOverlayState = false;
   }
+
 
 
 

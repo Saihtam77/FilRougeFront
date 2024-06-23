@@ -11,29 +11,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListeEditComponent {
 
-  @Input() liste: Liste;
+  @Input() projetId: number;
+  @Input() listeId: number;
+  
   listeEdit: FormGroup;
 
-  constructor(private ListesService: ListesService, private route: ActivatedRoute) {
-
-
-  }
+  constructor(private ListesService: ListesService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(
-      params => {
-        console.log(this.liste.nom);
-        this.listeEdit = new FormGroup({
-          nom: new FormControl(""),
-          projetId: new FormControl(params['id'])
-        });
-      })
+
+    this.listeEdit = new FormGroup({
+      nom: new FormControl(""),
+      projetId: new FormControl(this.projetId)
+    });
+    console.log(this.listeId);
 
   }
 
   onSubmit() {
     console.log(this.listeEdit.value);
-    this.ListesService.updateListe(this.liste.id, this.listeEdit.value);
+    this.ListesService.updateListe(this.listeId, this.listeEdit.value); 
     this.listeEdit.reset();
   }
 }
