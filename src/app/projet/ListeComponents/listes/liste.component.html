@@ -3,7 +3,6 @@
     <button (click)="formOverlayClose()">close</button>
     <app-liste-create *ngIf="createListeOverlayState" [projetId]="projet.id"></app-liste-create>
     <app-liste-edit *ngIf="editListeOverlayState" [projetId]="projet.id" [liste]="listeToEdit"></app-liste-edit>
-    <!-- <app-liste-edit *ngIf="editOverlayState" [projetId]="projet.id" [listeId]="listeId"></app-liste-edit> -->
 
 </div>
 
@@ -16,7 +15,6 @@
                 <div class="d-flex gap-2">
                     <button class="btn btn-info" (click)="EditListeFormOverlay(liste)">Edit</button>
                     <button class="btn btn-danger" (click)="onDeleteListe(liste.id)">Delete</button>
-                    <button class="btn btn-success" (click)="CreateTacheFormOverlay()">Ajouter une tache</button>
                 </div>
                 {{liste.nom}}
                 <app-tache [listeId]="liste.id"></app-tache>
