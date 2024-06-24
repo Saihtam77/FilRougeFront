@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Liste, Projet, Tache } from '../../../../../Data_types/Projets_types';
-import { TachesService } from '../../../Services/taches.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ListesService } from '../../../Services/listes.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-liste',
@@ -16,16 +14,21 @@ export class ListeComponent implements OnInit {
 
   @Input() projet: Projet;
 
-  listeId: number;//for edit
+  listeToEdit: Liste;
 
-  createOverlayState = false;
-  editOverlayState = false;
+  formOverlayState = false;
+  
+  createListeOverlayState = false;
+  editListeOverlayState = false;
+  
+  createTachesOverlayState = false;
 
   constructor(private ListesService: ListesService) {
   }
 
   ngOnInit() {
-    this.ListesService.getListeByProjetId(this.projet.id).subscribe(
+    this.ListesService.getListeByProjetId(this.projet.id);
+    this.ListesService.listes$.subscribe(
       listes => this.listes = listes
     );
   }
@@ -37,15 +40,28 @@ export class ListeComponent implements OnInit {
   }
 
 
-  CreateFormOverlay() {
-    this.createOverlayState = !this.createOverlayState;
-    this.editOverlayState = false;
+
+
+
+  //Overlay
+  formOverlayClose() {
+    this.formOverlayState = false;
+    this.createListeOverlayState = false;
+    this.editListeOverlayState = false;
+    this.createTachesOverlayState = false;
+  }
+  //affichage de form
+  CreateListeFormOverlay() {
+    this.createListeOverlayState = !this.createListeOverlayState;
   }
 
-  EditFormOverlay(id: number) {
-    this.listeId = id;
-    this.editOverlayState = !this.editOverlayState;
-    this.createOverlayState = false;
+  CreateTacheFormOverlay() {
+    this.createTachesOverlayState = !this.createTachesOverlayState;
+  }
+
+  EditListeFormOverlay(liste: Liste) {
+    this.listeToEdit = liste;
+    this.editListeOverlayState = !this.editListeOverlayState;
   }
 
 

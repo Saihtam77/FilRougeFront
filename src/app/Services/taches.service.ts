@@ -9,17 +9,13 @@ import { Tache } from '../../../Data_types/Projets_types';
 export class TachesService {
   private tachesSubject = new BehaviorSubject<Tache[]>([]);
   taches$ = this.tachesSubject.asObservable();
+  listeId: number;
 
   url = "http://localhost:5147";
 
   constructor(private http: HttpClient) { }
 
-  getTaches() {
-    this.http.get<Tache[]>(`${this.url}/taches`).subscribe(
-      taches => this.tachesSubject.next(taches)
-    );
-    return this.taches$;
-  }
+  
 
   getTacheById(id: number) {
     this.http.get<Tache>(`${this.url}/taches/${id}`).subscribe(
@@ -34,19 +30,19 @@ export class TachesService {
 
   deleteTache(id: number) {
     this.http.delete(`${this.url}/taches/${id}`).subscribe(
-      () => this.getTaches()
+      () => this.getTacheById(this.listeId)
     );
   }
 
   createTache(tache: Tache) {
     this.http.post<Tache>(`${this.url}/taches`, tache).subscribe(
-      () => this.getTaches()
+      () => this.getTacheByListeId(this.listeId)
     );
   }
 
   updateTache(id: number, tache: Tache) {
     this.http.put<Tache>(`${this.url}/taches/${id}`, tache).subscribe(
-      () => this.getTaches()
+      () => this.getTacheByListeId(this.listeId)
     );
   }
 

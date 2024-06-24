@@ -12,25 +12,28 @@ import { ActivatedRoute } from '@angular/router';
 export class ListeEditComponent {
 
   @Input() projetId: number;
-  @Input() listeId: number;
+  @Input() liste: Liste;
   
   listeEdit: FormGroup;
+
+  suscessMessage = false;
 
   constructor(private ListesService: ListesService) {}
 
   ngOnInit() {
 
     this.listeEdit = new FormGroup({
-      nom: new FormControl(""),
+      nom: new FormControl(this.liste.nom),
       projetId: new FormControl(this.projetId)
     });
-    console.log(this.listeId);
+    console.log(this.liste.id);
 
   }
 
   onSubmit() {
     console.log(this.listeEdit.value);
-    this.ListesService.updateListe(this.listeId, this.listeEdit.value); 
+    this.ListesService.updateListe(this.liste.id, this.listeEdit.value); 
+    this.suscessMessage = true;
     this.listeEdit.reset();
   }
 }

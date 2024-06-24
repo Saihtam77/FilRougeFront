@@ -1,0 +1,4 @@
+.disabled-background {
+    pointer-events: none; /* Désactive les interactions */
+    opacity: 0.4; /* Grise l'arrière-plan */
+}

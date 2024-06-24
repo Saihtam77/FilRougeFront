@@ -9,43 +9,42 @@ import { Liste } from '../../../Data_types/Projets_types';
 export class ListesService {
   private listesSubject = new BehaviorSubject<Liste[]>([]);
   listes$ = this.listesSubject.asObservable();
+  projetId: number;
 
   url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
-  getListes() {
-    this.http.get<Liste[]>(`${this.url}/listes`).subscribe(
-      listes => this.listesSubject.next(listes)
+
+  getListeByProjetId(projetId: number): Observable<Liste[]> {
+    this.http.get<Liste[]>(`${this.url}/listes/GetListesByProjetId/${projetId}`).subscribe(
+      (listes) => {
+        this.listesSubject.next(listes);
+        this.projetId = projetId;
+      }
     );
     return this.listes$;
   }
 
-  getListeById(id: number): Observable<Liste> {
-    this.http.get<Liste>(`${this.url}/listes/${id}`).subscribe(
-      liste => this.listesSubject.next([liste])
-    );
+  getListeById(id: number) {
     return this.http.get<Liste>(`${this.url}/listes/${id}`);
   }
 
-  getListeByProjetId(projetId: number): Observable<Liste[]> {
-    return this.http.get<Liste[]>(`${this.url}/listes/GetListesByProjetId/${projetId}`)
-  }
-
+  
   deleteListe(id: number) {
     this.http.delete(`${this.url}/listes/${id}`).subscribe(
-      () => this.getListes()
-    );
+      ()=>this.getListeByProjetId(this.projetId)
+    )
   }
 
   createListe(liste: Liste) {
     this.http.post<Liste>(`${this.url}/listes`, liste).subscribe(
-      () => this.getListes()
-    );
+      ()=>this.getListeByProjetId(this.projetId)
+    )
   }
 
   updateListe(id: number, liste: Liste) {
     this.http.put<Liste>(`${this.url}/listes/${id}`, liste).subscribe(
-      () => this.getListes()
-    );
+      ()=>this.getListeByProjetId(this.projetId)
+    )
   }
 }

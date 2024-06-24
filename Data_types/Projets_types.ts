@@ -9,7 +9,6 @@ export class Projet {
 export class Liste {
     id: number;
     nom: string;
-    createdAt: string;
     projetId: number;
 
     taches: Tache[];
@@ -20,6 +19,7 @@ export class Tache {
     nom: string;
     detail:string;
     createdAt: string;
+    endDate: string;
     listeId: number;
 
     commentaires: Commentaire[];

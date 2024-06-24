@@ -1,3 +1,3 @@
-<div class="badge p-2">
-    {{tache.nom}}
+<div *ngIf="taches" class="d-flex flex-column">
+    <span *ngFor="let tache of taches">{{tache.nom}}</span>
 </div>

@@ -1,24 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Tache, Commentaire } from '../../../../../Data_types/Projets_types';
 import { CommentairesService } from '../../../Services/commentaires.service';
+import { TachesService } from '../../../Services/taches.service';
 
 @Component({
   selector: 'app-tache',
   templateUrl: './tache.component.html',
   styleUrl: './tache.component.css'
 })
-export class TacheComponent {
+export class TacheComponent implements OnInit {
 
-  @Input() tache: Tache;
-  Commentaires?: Commentaire[];
-  constructor(private CommentairesService: CommentairesService) {
+  taches: Tache[];
+  @Input() listeId: number;
+  constructor(private TachesService: TachesService) {
 
   }
 
-  // ngOnInit() {
-  //   this.CommentairesService.getCommentaireByTacheId(this.tache.id).subscribe(
-  //     Commentaires => this.Commentaires = Commentaires
-  //   );
-  // }
+  ngOnInit() {
+    this.TachesService.getTacheByListeId(this.listeId).subscribe(
+      taches => this.taches = taches
+    );
+  }
+
 
 }
