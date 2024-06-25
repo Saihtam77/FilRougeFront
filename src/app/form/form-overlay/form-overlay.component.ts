@@ -1,50 +1,37 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Tache } from '../../../../Data_types/Projets_types';
+import { FormOverlayService } from '../../Services/form-overlay.service';
 
 @Component({
   selector: 'app-form-overlay',
   templateUrl: './form-overlay.component.html',
   styleUrl: './form-overlay.component.css'
 })
-export class FormOverlayComponent {
+export class FormOverlayComponent implements OnInit {
 
-  @Input() OverlayEvent: boolean;
+  formOverlayState: boolean;
 
-  formOverlayState: boolean = false;
-  listeCreateFormState: boolean = false;
-  listeEditFormState: boolean = false;
-  tacheCreateFormState: boolean = false;
-  tacheEditFormState: boolean = false;
+  listeCreateFormState: boolean;
+  listeEditFormState: boolean;
+  tacheCreateFormState: boolean;
+  tacheEditFormState: boolean;
 
-  constructor() { }
+  constructor(private FormOverlayService: FormOverlayService) {
 
-  FormOverlayOpenOrClose(state: boolean) {
-    if (this.OverlayEvent) {
-      this.formOverlayState = false;
-
-      this.listeCreateFormState = false;
-      this.listeEditFormState = false;
-
-      this.tacheCreateFormState = false;
-      this.tacheEditFormState = false;
-
-    } 
   }
 
-  ListeCreateForm() {
-    this.listeCreateFormState = true;
-  }
-  ListeEditForm() {
-    this.listeEditFormState = true;
-  }
-
-  TacheCreateForm() {
-    this.tacheCreateFormState = true;
+  ngOnInit(): void {
+    this.FormOverlayService.formOverlayState$.subscribe(
+      state => this.formOverlayState = state
+    );
   }
 
-  TacheEditForm(tache: Tache) {
-    this.tacheEditFormState = true;
+  FormOverlayOpenOrClose() {
+    this.FormOverlayService.closeFormOverlay();
   }
+
+
+
 
 
 
