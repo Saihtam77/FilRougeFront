@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditButtonComponent } from './edit-button.component';
+import { FormOverlayComponent } from './form-overlay.component';
 
-describe('EditButtonComponent', () => {
-  let component: EditButtonComponent;
-  let fixture: ComponentFixture<EditButtonComponent>;
+describe('FormOverlayComponent', () => {
+  let component: FormOverlayComponent;
+  let fixture: ComponentFixture<FormOverlayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EditButtonComponent]
+      declarations: [FormOverlayComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(EditButtonComponent);
+    fixture = TestBed.createComponent(FormOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

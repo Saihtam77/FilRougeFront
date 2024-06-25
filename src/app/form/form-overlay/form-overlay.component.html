@@ -1,0 +1,7 @@
+<div *ngIf="formOverlayState">
+    <app-liste-create *ngIf="listeCreateFormState"></app-liste-create>
+    <app-liste-edit *ngIf="listeEditFormState"></app-liste-edit>
+    <app-tache-create *ngIf="tacheCreateFormState"></app-tache-create>
+    <app-tache-edit *ngIf="tacheEditFormState"></app-tache-edit>
+    <button (click)="FormOverlayOpenOrClose(false)">X</button>
+</div>

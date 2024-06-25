@@ -1,7 +1,8 @@
+
 <div *ngIf="taches" class="d-flex flex-column gap-3">
     <button class="btn btn-success">Ajouter tache</button>
     <span *ngFor="let tache of taches" class="d-flex align-items-center justify-content-between">
         <p class="p-0 m-0">{{tache.nom}}</p>
-        <button class=" btn btn-danger">X</button>
+        <button (click)="onDeleteTache(tache.id)" class=" btn btn-danger">X</button>
     </span>
 </div>

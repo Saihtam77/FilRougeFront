@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoButtonComponent } from './info-button.component';
+import { TacheEditComponent } from './tache-edit.component';
 
-describe('InfoButtonComponent', () => {
-  let component: InfoButtonComponent;
-  let fixture: ComponentFixture<InfoButtonComponent>;
+describe('TacheEditComponent', () => {
+  let component: TacheEditComponent;
+  let fixture: ComponentFixture<TacheEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InfoButtonComponent]
+      declarations: [TacheEditComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(InfoButtonComponent);
+    fixture = TestBed.createComponent(TacheEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
