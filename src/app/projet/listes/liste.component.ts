@@ -1,6 +1,7 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { ListesService } from '../../Services/listes.service';
 import { Liste, Projet } from '../../../../Data_types/Projets_types';
+import { FormOverlayService } from '../../Services/form-overlay.service';
 
 @Component({
   selector: 'app-liste',
@@ -15,11 +16,10 @@ export class ListeComponent implements OnInit {
 
   listeToEdit: Liste;
 
-  overlayEvent: boolean = false;
 
   
 
-  constructor(private ListesService: ListesService) {}
+  constructor(private ListesService: ListesService, private FormOverlayService: FormOverlayService) {}
 
   ngOnInit() {
     this.ListesService.getListeByProjetId(this.projet.id);
@@ -35,9 +35,21 @@ export class ListeComponent implements OnInit {
   }
 
 
-  setOverlayEvent() {
-    this.overlayEvent = !this.overlayEvent;
-  }
+  // setOverlayEvent(form:string) {
+  //   this.FormOverlayService.openFormOverlay();
+  //   if (form === 'listeCreate') {
+  //     this.FormOverlayService.openListeCreateForm();
+  //   }
+  //   if (form === 'listeEdit') {
+  //     this.FormOverlayService.openListeEditForm();
+  //   }
+  //   if (form === 'tacheCreate') {
+  //     this.FormOverlayService.openTacheCreateForm();
+  //   }
+  //   if (form === 'tacheEdit') {
+  //     this.FormOverlayService.openTacheEditForm();
+  //   }
+  // }
 
   
 

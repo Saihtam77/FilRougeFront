@@ -26,9 +26,33 @@ export class FormOverlayComponent implements OnInit {
     );
   }
 
-  FormOverlayOpenOrClose() {
+  FormOverlayClose() {
     this.FormOverlayService.closeFormOverlay();
+    
+    this.listeCreateFormState = false;
+    this.listeEditFormState = false;
+    
+    this.tacheCreateFormState = false;
+    this.tacheEditFormState = false;
   }
+
+  openListeCreateForm() {
+    this.listeCreateFormState = true;
+  }
+
+  openListeEditForm() {
+    this.listeEditFormState = true;
+  }
+
+  openTacheCreateForm() {
+    this.tacheCreateFormState = true;
+  }
+
+  openTacheEditForm() {
+    this.tacheEditFormState = true;
+  }
+
+
 
 
 
