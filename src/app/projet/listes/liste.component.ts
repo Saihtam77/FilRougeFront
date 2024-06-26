@@ -35,22 +35,6 @@ export class ListeComponent implements OnInit {
   }
 
 
-  // setOverlayEvent(form:string) {
-  //   this.FormOverlayService.openFormOverlay();
-  //   if (form === 'listeCreate') {
-  //     this.FormOverlayService.openListeCreateForm();
-  //   }
-  //   if (form === 'listeEdit') {
-  //     this.FormOverlayService.openListeEditForm();
-  //   }
-  //   if (form === 'tacheCreate') {
-  //     this.FormOverlayService.openTacheCreateForm();
-  //   }
-  //   if (form === 'tacheEdit') {
-  //     this.FormOverlayService.openTacheEditForm();
-  //   }
-  // }
-
   
 
 
