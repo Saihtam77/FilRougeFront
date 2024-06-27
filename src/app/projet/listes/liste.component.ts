@@ -1,7 +1,8 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, ViewChild} from '@angular/core';
 import { ListesService } from '../../Services/listes.service';
 import { Liste, Projet } from '../../../../Data_types/Projets_types';
 import { FormOverlayService } from '../../Services/form-overlay.service';
+import { FormOverlayComponent } from '../../form/form-overlay/form-overlay.component';
 
 @Component({
   selector: 'app-liste',
@@ -20,6 +21,8 @@ export class ListeComponent implements OnInit {
   
 
   constructor(private ListesService: ListesService) {}
+  @ViewChild('FormOverlayRef') formOverlayRef: FormOverlayComponent;
+
 
   ngOnInit() {
     this.ListesService.getListeByProjetId(this.projet.id);

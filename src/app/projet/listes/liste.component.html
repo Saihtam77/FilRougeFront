@@ -12,7 +12,7 @@
                     <button class="btn btn-danger" (click)="onDeleteListe(liste.id)">Delete</button>
                 </div>
                 {{liste.nom}}
-                <app-tache [liste]="liste"></app-tache>
+                <app-tache [formOverlayRef]="formOverlayRef" [liste]="liste"></app-tache>
             </div>
         </div>
     </div>

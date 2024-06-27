@@ -73,7 +73,8 @@ export class FormOverlayComponent implements OnInit {
     this.listeEditFormState = false;
   }
 
-  openTacheCreateForm() {
+  openTacheCreateForm(listeId: number) {
+    this.listeId = listeId;
     this.tacheCreateFormState = true;
 
     this.FormOverlayService.openFormOverlay();
@@ -86,7 +87,8 @@ export class FormOverlayComponent implements OnInit {
     this.tacheCreateFormState = false;
   }
 
-  openTacheEditForm() {
+  openTacheEditForm(tache: Tache) {
+    this.tache = tache;
     this.tacheEditFormState = true;
 
     this.FormOverlayService.openFormOverlay();

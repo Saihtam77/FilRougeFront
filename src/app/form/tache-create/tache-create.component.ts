@@ -17,6 +17,7 @@ export class TacheCreateComponent implements OnInit{
 
   ngOnInit() {
     if (!this.listeId) return;
+    console.log(this.listeId);
     this.tacheCreate = new FormGroup({
       nom: new FormControl('', Validators.required),
       listeId: new FormControl(this.listeId, Validators.required),
