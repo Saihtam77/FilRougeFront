@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListesService } from '../../Services/listes.service';
 
@@ -7,12 +7,16 @@ import { ListesService } from '../../Services/listes.service';
   templateUrl: './liste-create.component.html',
   styleUrl: './liste-create.component.css'
 })
-export class ListeCreateComponent {
+export class ListeCreateComponent implements OnInit{
 
   listeform:FormGroup;
   @Input() projetId: number;
 
-  constructor(private ListesService: ListesService) { 
+  constructor(private ListesService: ListesService) {}
+
+  ngOnInit() {
+    if (!this.projetId) return;
+    console.log(this.projetId);
     this.listeform = new FormGroup({
       nom: new FormControl('', Validators.required),
       projetId: new FormControl(this.projetId)

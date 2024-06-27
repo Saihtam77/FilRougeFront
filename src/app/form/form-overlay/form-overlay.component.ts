@@ -19,13 +19,12 @@ export class FormOverlayComponent implements OnInit {
 
   //Data for edit
   projetId: number;
-  
   listeId: number;
-  liste: Liste;
-
   tacheId: number;
+
+  liste: Liste;
   tache: Tache;
-  
+
   constructor(private FormOverlayService: FormOverlayService) {
 
   }
@@ -46,74 +45,58 @@ export class FormOverlayComponent implements OnInit {
 
   }
 
-  FormOverlayOpen(action: string) {
+  openListeCreateForm(projetId: number) {
+    this.projetId = projetId;
+    this.listeCreateFormState = true;
+
     this.FormOverlayService.openFormOverlay();
 
-    if (action === 'listeCreate') {
-      this.openListeCreateForm();
-      
-      this.closeListeEditForm();
-      this.closeTacheCreateForm();
-      this.closeTacheEditForm();
-    }
-
-    if (action === 'listeEdit') {
-      this.openListeEditForm();
-      
-      this.closeListeCreateForm();
-      this.closeTacheCreateForm();
-      this.closeTacheEditForm();
-    }
-
-    if (action === 'tacheCreate') {
-      this.openTacheCreateForm();
-      
-      this.closeListeCreateForm();
-      this.closeListeEditForm();
-      this.closeTacheEditForm();
-    }
-
-    if (action === 'tacheEdit') {
-      this.openTacheEditForm();
-      
-      this.closeListeCreateForm();
-      this.closeListeEditForm();
-      this.closeTacheCreateForm();
-    }
-
-
-  }
-  
-  openListeCreateForm() {
-    this.listeCreateFormState = true;
+    this.closeListeEditForm();
+    this.closeTacheCreateForm();
+    this.closeTacheEditForm();
   }
   closeListeCreateForm() {
     this.listeCreateFormState = false;
   }
-  openListeEditForm() {
+
+  openListeEditForm(liste: Liste) {
+    this.liste = liste;
     this.listeEditFormState = true;
+
+    this.FormOverlayService.openFormOverlay();
+
+    this.closeListeCreateForm();
+    this.closeTacheCreateForm();
+    this.closeTacheEditForm();
   }
   closeListeEditForm() {
     this.listeEditFormState = false;
   }
+
   openTacheCreateForm() {
     this.tacheCreateFormState = true;
+
+    this.FormOverlayService.openFormOverlay();
+
+    this.closeListeCreateForm();
+    this.closeListeEditForm();
+    this.closeTacheEditForm();
   }
   closeTacheCreateForm() {
     this.tacheCreateFormState = false;
   }
+
   openTacheEditForm() {
     this.tacheEditFormState = true;
+
+    this.FormOverlayService.openFormOverlay();
+
+    this.closeListeCreateForm();
+    this.closeListeEditForm();
+    this.closeTacheCreateForm();
   }
   closeTacheEditForm() {
     this.tacheEditFormState = false;
   }
-
-
-
-
-
-
-
 
 }

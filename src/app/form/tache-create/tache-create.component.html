@@ -1,1 +1,8 @@
 <p>tache-create works!</p>
+<form [formGroup]="tacheCreate" (ngSubmit)="OnSubmit()">
+    <div class="form-group">
+        <label for="nom">Nom de la tache</label>
+        <input type="text" class="form-control" id="nom" formControlName="nom" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>

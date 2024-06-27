@@ -3,12 +3,12 @@
 <div>
     <div class="container py-5">
         <!-- Btn -->
-        <button class="btn btn-info mb-5" (click)="FormOverlayRef.FormOverlayOpen('listeCreate')" >Ajouter une liste</button>
+        <button class="btn btn-info mb-5" (click)="FormOverlayRef.openListeCreateForm(projet.id)" >Ajouter une liste</button>
         <div *ngIf="listes" class="d-flex gap-3 ">
             <div *ngFor="let liste of listes"
                 class=" d-flex flex-column gap-3 p-3 col-3 bg-secondary bg-success-subtle">
                 <div class="d-flex gap-2">
-                    <button class="btn btn-info" (click)="FormOverlayRef.FormOverlayOpen('listeEdit')">Edit</button>
+                    <button class="btn btn-info" (click)="FormOverlayRef.openListeEditForm(liste)">Edit</button>
                     <button class="btn btn-danger" (click)="onDeleteListe(liste.id)">Delete</button>
                 </div>
                 {{liste.nom}}

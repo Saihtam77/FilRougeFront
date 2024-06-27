@@ -19,7 +19,7 @@ export class ListeComponent implements OnInit {
 
   
 
-  constructor(private ListesService: ListesService, private FormOverlayService: FormOverlayService) {}
+  constructor(private ListesService: ListesService) {}
 
   ngOnInit() {
     this.ListesService.getListeByProjetId(this.projet.id);
