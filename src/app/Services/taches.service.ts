@@ -25,7 +25,7 @@ export class TachesService {
   }
 
   getTacheByListeId(listeId: number): Observable<Tache[]> {
-    return this.http.get<Tache[]>(`${this.url}/taches/GetTachesByListeId/${listeId}`)
+    return this.http.get<Tache[]>(`${this.url}/taches/GetTachesListes/${listeId}`)
   }
 
   deleteTache(id: number) {

@@ -27,7 +27,7 @@ export class CommentairesService {
   }
 
   getCommentaireByTacheId(tacheId: number) : Observable<Commentaire[]> {
-    return this.http.get<Commentaire[]>(`${this.url}/commentaires/GetCommentairesByTacheId/${tacheId}`);
+    return this.http.get<Commentaire[]>(`${this.url}/commentaires/GetCommentsTaches/${tacheId}`);
   }
 
   deleteCommentaire(id: number) {

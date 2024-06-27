@@ -16,7 +16,7 @@ export class ListesService {
 
 
   getListeByProjetId(projetId: number): Observable<Liste[]> {
-    this.http.get<Liste[]>(`${this.url}/listes/GetListesByProjetId/${projetId}`).subscribe(
+    this.http.get<Liste[]>(`${this.url}/listes/GetProjetListes/${projetId}`).subscribe(
       (listes) => {
         this.listesSubject.next(listes);
         this.projetId = projetId;
