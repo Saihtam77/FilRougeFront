@@ -17,7 +17,7 @@ export class Liste {
 export class Tache {
     id: number;
     nom: string;
-    detail:string;
+    description:string;
     createdAt: string;
     endDate: string;
     listeId: number;

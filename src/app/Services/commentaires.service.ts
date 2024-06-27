@@ -10,7 +10,7 @@ export class CommentairesService {
   private commentairesSubject = new BehaviorSubject<Commentaire[]>([]);
   commentaires$ = this.commentairesSubject.asObservable();
 
-  url = "http://localhost:5147"; 
+  url = "https://filrougeback.azurewebsites.net"; 
   
   constructor(private http: HttpClient) { }
 
