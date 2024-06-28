@@ -1,9 +1,10 @@
-<div *ngIf="formOverlayState" class="min-vh-100 position-absolute top-0 end-0">
+<div *ngIf="formOverlayState" class="min-vh-100 position-absolute top-0 end-0 p-5 border col-4 bg-white ">
     <app-liste-create *ngIf="listeCreateFormState" [projetId]="projetId"></app-liste-create>
     <app-liste-edit *ngIf="listeEditFormState" [liste]="liste"></app-liste-edit>
 
     <app-tache-create *ngIf="tacheCreateFormState" [listeId]="listeId"></app-tache-create>
     <app-tache-edit *ngIf="tacheEditFormState" [tache]="tache"></app-tache-edit>
-    
-    <button (click)="FormOverlayClose()">X</button>
+    <br>
+    <br>
+    <button class="btn btn-light" (click)="FormOverlayClose()">Quitter</button>
 </div>

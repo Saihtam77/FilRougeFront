@@ -1,13 +1,13 @@
 <section class="container gap-4 mt-5 d-flex flex-column justify-content-center">
-    
-    <h3>Création d'un projet</h3>
-
+    <div class="shadow-sm text-bg-info p-3"><h3>Création d'un projet</h3> </div>
+ 
     <form class="d-flex flex-column gap-4 " [formGroup]="projet" (ngSubmit)="onSubmit()">
         <div class="d-flex flex-column gap-2 form-group">
-            <label for="">Quelle sera le nom de votre projet ?</label>
-            <input class="form-control" type="text" formControlName="nom" placeholder="Nom du projet" required>
+            <label class="bg-success-subtle fs-5" for="">Nom de votre projet ?</label>
         </div>
 
-        <button class="btn btn-success col-3" type="submit">Créer</button>
+            <input class="form-control bg-primary-subtle fst-italic" type="text" formControlName="nom" placeholder="Nom du projet" required>
+
+        <button class="btn btn-success col-2" type="submit">Créer</button>
     </form>
 </section>
