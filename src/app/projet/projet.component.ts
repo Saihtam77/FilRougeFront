@@ -13,7 +13,8 @@ export class ProjetComponent implements OnInit {
 
   projet: Projet;
 
-  constructor(private route: ActivatedRoute, private ProjetsService: ProjetsService) { }
+  constructor(private route: ActivatedRoute, private ProjetsService: ProjetsService) { 
+  }
 
   //form
 

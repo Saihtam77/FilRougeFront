@@ -1,16 +1,16 @@
-<section class="container d-flex flex-column position-absolute top-50 start-50 bg-white col-12 ">
+<section *ngIf="tache" class="container d-flex flex-column position-absolute bg-white col-12">
+    
     <!-- tache info -->
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, quasi unde reiciendis maxime dolores tempora
-        aperiam est similique facilis distinctio qui esse vero amet et at sed perferendis quo eveniet.
+    <div class="d-flex flex-column gap-3">
+        {{tache.nom}}
         <!-- description -->
         <article>
-
+            {{tache.description}}
         </article>
     </div>
     <!-- commentaire -->
     <div>
-
+        <app-commentaire></app-commentaire>
     </div>
 
 </section>
