@@ -10,15 +10,10 @@ export class CommentairesService {
   private commentairesSubject = new BehaviorSubject<Commentaire[]>([]);
   commentaires$ = this.commentairesSubject.asObservable();
 
-<<<<<<< HEAD
-  url = "https://filrougeback.azurewebsites.net"; 
-=======
   private commentaireCreee = new Subject<void>();
   tacheCreee$ = this.commentaireCreee.asObservable();
-
-
-  url = "http://localhost:5147"; 
->>>>>>> local
+  
+  url = "https://filrougeback.azurewebsites.net"; 
   
   constructor(private http: HttpClient) { }
 
