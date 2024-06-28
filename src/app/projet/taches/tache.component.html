@@ -1,7 +1,9 @@
+<app-tache-view *ngIf="tacheView" [tache]="tacheToView"></app-tache-view>
+
 
 <div *ngIf="taches" class="d-flex flex-column gap-3">
     <button class="btn btn-success" (click)="formOverlayRef.openTacheCreateForm(liste.id)">Ajouter tache</button>
-    <div *ngFor="let tache of taches" class="d-flex align-items-center justify-content-between border border-black p-2">
+    <div *ngFor="let tache of taches" (click)="OnTacheView(tache)" class="d-flex align-items-center justify-content-between border border-black p-2" >
         <p class="p-0 m-0">{{tache.nom}}</p>
         <span class="d-flex gap-2">
             <button (click)="formOverlayRef.openTacheEditForm(tache)" class=" btn btn-info">Edit</button>

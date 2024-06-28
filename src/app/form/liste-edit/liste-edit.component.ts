@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Liste } from '../../../../Data_types/Projets_types';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListesService } from '../../Services/listes.service';
@@ -11,6 +11,7 @@ import { ListesService } from '../../Services/listes.service';
 export class ListeEditComponent implements OnInit{
 
   @Input() liste: Liste;
+  @Output() close = new EventEmitter<void>(); 
 
   listeEdit: FormGroup;
   
@@ -29,7 +30,7 @@ export class ListeEditComponent implements OnInit{
 
   OnSubmit() {
     this.ListeService.updateListe(this.liste.id, this.listeEdit.value);
-    this.listeEdit.reset();
+    this.close.emit();
   }
 
 

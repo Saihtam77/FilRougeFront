@@ -10,8 +10,8 @@ export class TachesService {
   private tachesSubject = new BehaviorSubject<Tache[]>([]);
   taches$ = this.tachesSubject.asObservable();
 
-  private tacheCreee = new Subject<void>();
-  tacheCreee$ = this.tacheCreee.asObservable();
+  private tacheEventSubject = new Subject<void>();
+  tacheEvent$ = this.tacheEventSubject.asObservable();
 
 
   listeId: number;
@@ -42,14 +42,14 @@ export class TachesService {
 
   createTache(tache: Tache) {
     this.http.post<Tache>(`${this.url}/taches`, tache).subscribe(
-      () => this.tacheCreee.next()
+      () => this.tacheEventSubject.next()
     );
 
   }
 
   updateTache(id: number, tache: Tache) {
     this.http.put<Tache>(`${this.url}/taches/${id}`, tache).subscribe(
-      () => this.getTacheByListeId(this.listeId)
+      () => this.tacheEventSubject.next()
     );
   }
 
