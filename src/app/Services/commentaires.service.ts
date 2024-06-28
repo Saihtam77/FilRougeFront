@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Commentaire } from '../../../Data_types/Projets_types';
 
 @Injectable({
@@ -10,7 +10,15 @@ export class CommentairesService {
   private commentairesSubject = new BehaviorSubject<Commentaire[]>([]);
   commentaires$ = this.commentairesSubject.asObservable();
 
+<<<<<<< HEAD
   url = "https://filrougeback.azurewebsites.net"; 
+=======
+  private commentaireCreee = new Subject<void>();
+  tacheCreee$ = this.commentaireCreee.asObservable();
+
+
+  url = "http://localhost:5147"; 
+>>>>>>> local
   
   constructor(private http: HttpClient) { }
 
@@ -38,7 +46,7 @@ export class CommentairesService {
 
   createCommentaire(commentaire: Commentaire) {
     this.http.post<Commentaire>(`${this.url}/commentaires`, commentaire).subscribe(
-      () => this.getCommentaires()
+      () => this.commentaireCreee.next()
     );
   }
 

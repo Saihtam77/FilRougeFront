@@ -16,6 +16,8 @@ export class TacheComponent implements OnInit {
   @Input() liste: Liste;
 
   tacheToEdit: Tache;
+  tacheToView: Tache;
+  tacheView: boolean = false;
 
   constructor(private TachesService: TachesService) {
 
@@ -27,16 +29,22 @@ export class TacheComponent implements OnInit {
     this.TachesService.getTacheByListeId(this.liste.id).subscribe(
       taches => this.taches = taches
     );
-    this.TachesService.tacheCreee$.subscribe(
+    this.TachesService.tacheEvent$.subscribe(
       () => this.ngOnInit()
     );
-    
   }
 
   onDeleteTache(id: number) {
     this.TachesService.deleteTache(id);
     this.taches = this.taches.filter(tache => tache.id !== id);
   }
+
+  OnTacheView(tache: Tache) {
+    this.tacheView = true;
+    this.tacheToView = tache;
+  }
+
+
 
 
 

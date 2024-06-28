@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListesService } from '../../Services/listes.service';
 
@@ -11,6 +11,7 @@ export class ListeCreateComponent implements OnInit{
 
   listeform:FormGroup;
   @Input() projetId: number;
+  @Output() close = new EventEmitter<void>(); 
 
   constructor(private ListesService: ListesService) {}
 
@@ -25,7 +26,7 @@ export class ListeCreateComponent implements OnInit{
 
   OnSubmit() {
     this.ListesService.createListe(this.listeform.value);
-    this.listeform.reset();
+    this.close.emit();
   }
 
 }
