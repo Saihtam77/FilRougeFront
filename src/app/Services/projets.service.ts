@@ -13,7 +13,7 @@ export class ProjetsService {
   projets$ = this.projetsSubject.asObservable();
 
 
-  url = "https://filrougeback.azurewebsites.net";
+  url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
 
