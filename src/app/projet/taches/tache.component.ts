@@ -27,7 +27,7 @@ export class TacheComponent implements OnInit {
     this.TachesService.getTacheByListeId(this.liste.id).subscribe(
       taches => this.taches = taches
     );
-    this.TachesService.tacheCreee$.subscribe(
+    this.TachesService.tacheEvent$.subscribe(
       () => this.ngOnInit()
     );
     
@@ -37,6 +37,12 @@ export class TacheComponent implements OnInit {
     this.TachesService.deleteTache(id);
     this.taches = this.taches.filter(tache => tache.id !== id);
   }
+
+  OnTacheView(tache: Tache) {
+    
+  }
+
+
 
 
 

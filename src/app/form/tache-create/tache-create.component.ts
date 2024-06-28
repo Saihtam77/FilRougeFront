@@ -1,4 +1,4 @@
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TachesService } from '../../Services/taches.service';
 
@@ -10,6 +10,7 @@ import { TachesService } from '../../Services/taches.service';
 export class TacheCreateComponent implements OnInit{
 
   @Input() listeId: number;
+  @Output() close = new EventEmitter<void>(); 
 
   tacheCreate: FormGroup;
   
@@ -26,7 +27,7 @@ export class TacheCreateComponent implements OnInit{
   
   OnSubmit() {
     this.TacheService.createTache(this.tacheCreate.value);
-    this.tacheCreate.reset();
+    this.close.emit();
   }
 
 }

@@ -8,6 +8,8 @@ import { TacheComponent } from './taches/tache.component';
 import { ReactiveFormsModule, Form } from '@angular/forms';
 import { ProjetActionsBoardComponent } from './projet-actions-board/projet-actions-board.component';
 import { FormModule } from '../form/form.module';
+import { TacheViewComponent } from './tache-view/tache-view.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { FormModule } from '../form/form.module';
     ListeComponent,
     TacheComponent,
     ProjetActionsBoardComponent,
+    TacheViewComponent,
+    CommentaireComponent,
 
   ],
   imports: [
