@@ -13,7 +13,7 @@ export class CommentairesService {
   private commentaireEventSubject = new Subject<void>();
   commentaireEvent$ = this.commentaireEventSubject.asObservable();
   
-  url = "http://localhost:5147"; 
+  url = "https://filrougeback.azurewebsites.net"; 
   
   constructor(private http: HttpClient) { }
 
