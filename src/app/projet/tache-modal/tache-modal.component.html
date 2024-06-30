@@ -1,0 +1,14 @@
+<div *ngIf="tacheModalState"
+    class="position-absolute end-0 top-0  col-5 border d-flex flex-column align-items-center bg-white gap-3 min-vh-100">
+    <div *ngIf="tache" class="d-flex align-items-center gap-2">
+        <button (click)="ModalClose()" class=" btn-close"></button>
+        <h3>{{tache.nom}}</h3>
+    </div>
+    <article>
+        {{tache.description}}
+    </article>
+
+    <app-commentaire [tacheId]="tache.id"></app-commentaire>
+
+
+</div>

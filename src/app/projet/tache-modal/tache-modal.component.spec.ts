@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TacheViewComponent } from './tache-view.component';
+import { TacheModalComponent } from './tache-modal.component';
 
-describe('TacheViewComponent', () => {
-  let component: TacheViewComponent;
-  let fixture: ComponentFixture<TacheViewComponent>;
+describe('TacheModalComponent', () => {
+  let component: TacheModalComponent;
+  let fixture: ComponentFixture<TacheModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TacheViewComponent]
+      declarations: [TacheModalComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TacheViewComponent);
+    fixture = TestBed.createComponent(TacheModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

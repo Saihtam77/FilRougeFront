@@ -1,14 +1,13 @@
-<app-tache-view *ngIf="tacheView" [tache]="tacheToView"></app-tache-view>
-
+<app-tache-modal [tache]="tacheModal" #tacheModalRef></app-tache-modal> 
 
 <div *ngIf="taches" class="d-flex flex-column gap-3">
-    <button class="btn btn-success" (click)="formOverlayRef.openTacheCreateForm(liste.id)">Ajouter tache</button>
-    <div *ngFor="let tache of taches" (click)="OnTacheView(tache)" class="d-flex align-items-center justify-content-between border border-black p-2" >
+    <button class="btn btn-success" (click)="formOverlayRef.openTacheCreateForm(liste.id); $event.stopPropagation()">Ajouter tache</button>
+    <div *ngFor="let tache of taches" (click)="openTacheModal(tache)"
+        class="d-flex align-items-center justify-content-between border border-black p-2">
         <p class="p-0 m-0">{{tache.nom}}</p>
         <span class="d-flex gap-2">
-            <button (click)="formOverlayRef.openTacheEditForm(tache)" class=" btn btn-info">Edit</button>
-            <button (click)="onDeleteTache(tache.id)" class=" btn btn-danger">X</button>
+            <button (click)="formOverlayRef.openTacheEditForm(tache); $event.stopPropagation()" class=" btn btn-info">Edit</button>
+            <button (click)="onDeleteTache(tache.id); $event.stopPropagation()" class=" btn btn-danger">X</button>
         </span>
     </div>
-</div>
-
+</div>  

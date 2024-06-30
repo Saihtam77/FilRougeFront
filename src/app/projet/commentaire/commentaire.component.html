@@ -1,3 +1,23 @@
-<div class="">
-zùpp
+<div *ngIf="commentaires" class="d-flex flex-column align-items-center gap-2">
+    <h3>Commentaire</h3>
+    <span class="d-flex align-items-center">
+        <button class="btn-close" (click)="formCreateRef.onCancel()"></button>
+        <button class="btn btn-info" (click)="formCreateRef.onCreate()">Ajouter un commentaire</button>
+    </span>
+
+    <!-- Form -->
+    <app-commentaire-create #formCreateRef [tacheId]="tacheId"></app-commentaire-create>
+    <app-commentaire-edit #formEditRef *ngIf="formEditState" [commentaire]="commentaireToEdit" (formStateEvent)="onCancel()" ></app-commentaire-edit>
+
+    <div *ngFor="let commentaire of commentaires">
+        <p *ngIf="!formEditState" class="">{{commentaire.contenu}}</p>
+        
+        <hr class="border w-100 border-1 border-black">
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-info" (click)="onEdit(commentaire)">Edit</button>
+            <button class="btn btn-danger" (click)="onDelete(commentaire)">Delete</button>
+            <button class="btn-close" (click)="onCancel()"></button>
+        </div>
+    </div>
 </div>

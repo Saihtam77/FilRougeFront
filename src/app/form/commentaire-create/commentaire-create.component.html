@@ -1,0 +1,9 @@
+<!-- Form -->
+<form *ngIf="formstate" class="d-flex flex-column gap-4 " [formGroup]="commentaireCreateForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-column gap-2 form-group">
+        <textarea class="form-control bg-primary-subtle fst-italic" type="text" formControlName="contenu"
+            placeholder="texte..." required></textarea>
+    </div>
+
+    <button class="btn btn-success col-3" type="submit">Créer</button>
+</form>

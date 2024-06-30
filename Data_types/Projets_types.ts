@@ -27,7 +27,7 @@ export class Tache {
 
 export class Commentaire {
     id: number;
-    texte: string;
+    contenu: string;
     createdAt: string;
     tacheId: number;
 }

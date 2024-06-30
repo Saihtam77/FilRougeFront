@@ -26,31 +26,31 @@ export class TachesService {
 
   getTacheById(id: number) {
     
-    this.http.get<Tache>(`${this.url}/taches/${id}`).subscribe(
+    this.http.get<Tache>(`${this.url}/Taches/${id}`).subscribe(
       tache => this.tachesSubject.next([tache])
     );
     return this.taches$;
   }
 
   getTacheByListeId(listeId: number): Observable<Tache[]> {
-    return this.http.get<Tache[]>(`${this.url}/taches/GetTachesListes/${listeId}`)
+    return this.http.get<Tache[]>(`${this.url}/Taches/GetTachesListes/${listeId}`)
   }
 
   deleteTache(id: number) {
-    this.http.delete(`${this.url}/taches/${id}`).subscribe(
+    this.http.delete(`${this.url}/Taches/${id}`).subscribe(
       () => this.getTacheById(this.listeId)
     );
   }
 
   createTache(tache: Tache) {
-    this.http.post<Tache>(`${this.url}/taches`, tache).subscribe(
+    this.http.post<Tache>(`${this.url}/Taches`, tache).subscribe(
       () => this.tacheEventSubject.next()
     );
 
   }
 
   updateTache(id: number, tache: Tache) {
-    this.http.put<Tache>(`${this.url}/taches/${id}`, tache).subscribe(
+    this.http.put<Tache>(`${this.url}/Taches/${id}`, tache).subscribe(
       () => this.tacheEventSubject.next()
     );
   }

@@ -6,6 +6,8 @@ import { TacheEditComponent } from './tache-edit/tache-edit.component';
 import { TacheCreateComponent } from './tache-create/tache-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormOverlayComponent } from './form-overlay/form-overlay.component';
+import { CommentaireCreateComponent } from './commentaire-create/commentaire-create.component';
+import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.component';
 
 
 
@@ -15,7 +17,9 @@ import { FormOverlayComponent } from './form-overlay/form-overlay.component';
     ListeEditComponent,
     TacheEditComponent,
     TacheCreateComponent,
-    FormOverlayComponent
+    FormOverlayComponent,
+    CommentaireCreateComponent,
+    CommentaireEditComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { FormOverlayComponent } from './form-overlay/form-overlay.component';
   ],
 
   exports: [
-    FormOverlayComponent
+    FormOverlayComponent,
+    CommentaireCreateComponent,
+    CommentaireEditComponent,
   ]
 })
 export class FormModule { }

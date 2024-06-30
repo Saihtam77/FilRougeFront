@@ -8,8 +8,8 @@ import { TacheComponent } from './taches/tache.component';
 import { ReactiveFormsModule, Form } from '@angular/forms';
 import { ProjetActionsBoardComponent } from './projet-actions-board/projet-actions-board.component';
 import { FormModule } from '../form/form.module';
-import { TacheViewComponent } from './tache-view/tache-view.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
+import { TacheModalComponent } from './tache-modal/tache-modal.component';
 
 
 @NgModule({
@@ -18,15 +18,14 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
     ListeComponent,
     TacheComponent,
     ProjetActionsBoardComponent,
-    TacheViewComponent,
     CommentaireComponent,
-
+    TacheModalComponent,
   ],
   imports: [
     CommonModule,
     ProjetRoutingModule,
     ReactiveFormsModule,
-    FormModule
+    FormModule,
   ],
 })
 export class ProjetModule { }

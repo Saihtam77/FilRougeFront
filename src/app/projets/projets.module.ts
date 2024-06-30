@@ -25,7 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterLink,
     CommonModule,
     ReactiveFormsModule,
-    ProjetsRoutingModule
+    ProjetsRoutingModule,
   ]
 })
 export class ProjetsModule { }
