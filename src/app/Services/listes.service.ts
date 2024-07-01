@@ -11,7 +11,7 @@ export class ListesService {
   listes$ = this.listesSubject.asObservable();
   projetId: number;
 
-  url = "https://filrougeback.azurewebsites.net";
+  url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
 

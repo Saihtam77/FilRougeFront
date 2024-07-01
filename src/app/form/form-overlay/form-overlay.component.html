@@ -5,5 +5,8 @@
     <app-tache-create *ngIf="tacheCreateFormState" (close)="FormOverlayClose()" [listeId]="listeId"></app-tache-create>
     <app-tache-edit *ngIf="tacheEditFormState" (close)="FormOverlayClose()" [tache]="tache"></app-tache-edit>
     
-    <button class="btn btn-light" (click)="FormOverlayClose()">Quitter</button>
+    <div class="d-flex justify-content-end">
+        <!-- <button class="btn btn-danger" (click)="FormOverlayClose()">Quitter</button> -->
+        <app-btn-danger text="Quitter" (click)="FormOverlayClose()"></app-btn-danger>
+    </div>
 </div>

@@ -13,7 +13,7 @@ export class ProjetsService {
   projets$ = this.projetsSubject.asObservable();
 
 
-  url = "https://filrougeback.azurewebsites.net";
+  url = "http://localhost:5147";
   constructor(private http: HttpClient) { }
 
 
@@ -39,6 +39,7 @@ export class ProjetsService {
     this.http.post<Projet>(`${this.url}/projets`, projet).subscribe(
       () => this.getProjets()
     );
+    return 
   }
 
   updateProjet(id: number, projet: Projet) {
