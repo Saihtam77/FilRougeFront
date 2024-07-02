@@ -18,7 +18,7 @@ export class TachesService {
 
   listeId: number;
 
-  url = "http://localhost:5175";
+  url = "https://filrougeback.azurewebsites.net";
 
   constructor(private http: HttpClient) { }
 
