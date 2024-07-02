@@ -29,7 +29,7 @@ export class TacheCreateComponent implements OnInit{
     console.log(this.listeId);
     this.tacheCreate = new FormGroup({
       nom: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]*$')]),
-      description: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]*$')]),
+      description: new FormControl('', [Validators.pattern('^[a-zA-Z0-9 ]*$')]),
       listeId: new FormControl(this.listeId, Validators.required),
     });
   }

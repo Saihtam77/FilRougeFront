@@ -22,7 +22,7 @@ export class TacheEditComponent implements OnInit {
     if (!this.tache) return;
     this.tacheEdit = new FormGroup({
       nom: new FormControl(this.tache.nom, Validators.required),
-      listeId: new FormControl(this.tache.listeId, Validators.required),
+      description: new FormControl(this.tache.description,[Validators.pattern('^[a-zA-Z0-9 ]*$')]),
     });
   }
 
